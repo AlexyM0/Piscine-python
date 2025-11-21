@@ -2,7 +2,9 @@ def give_bmi(
     height: list[int | float],
     weight: list[int | float],
 ) -> list[int | float]:
-    assert len(height) == len(weight), "Bad arguments"
+    assert type(height) is list, "height must be a list"
+    assert type(weight) is list, "weight must be a list"
+    assert len(height) is len(weight), "Bad arguments"
 
     result: list[int | float] = []
     for h, w in zip(height, weight):
