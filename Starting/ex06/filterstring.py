@@ -1,11 +1,12 @@
 import sys
 
-def printfilter(string: str, nbr: int):
-    words = []
+
+def printfilter(string: str, nbr: int) -> None:
+    words: list[str] = []
     current = ""
 
     for c in string:
-        if c == ' ':
+        if c == " ":
             if current != "":
                 words.append(current)
                 current = ""
@@ -14,12 +15,14 @@ def printfilter(string: str, nbr: int):
     if current != "":
         words.append(current)
 
-    is_longer = lambda s: len(s) > nbr
+    def is_longer(s: str) -> bool:
+        return len(s) > nbr
+
     filtered = [word for word in words if is_longer(word)]
     print(filtered)
 
 
-def main():
+def main() -> None:
     assert len(sys.argv) == 3, "the arguments are bad"
     printfilter(sys.argv[1], int(sys.argv[2]))
 

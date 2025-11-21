@@ -1,6 +1,5 @@
 import os
 
-import os
 
 def ft_tqdm(lst: range):
     total = len(lst)
@@ -35,9 +34,9 @@ def ft_tqdm(lst: range):
     print()
 
 
-    
 def main():
     pass
+
 
 if __name__ == "__main__":
     main()
