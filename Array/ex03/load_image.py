@@ -11,9 +11,15 @@ def ft_load(path: str) -> np.ndarray:
     except FileNotFoundError:
         raise AssertionError("File not found")
 
-
     arr = np.array(img)
     print("The shape of image is:", arr.shape)
     print(arr)
     return arr
 
+
+def main() -> None:
+    pass
+
+
+if __name__ == "__main__":
+    main()
