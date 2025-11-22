@@ -17,3 +17,11 @@ def slice_me(family: list, start: int, end: int) -> list:
     cols = len(new_family[0])
     print(f"My new shape is : ({rows}, {cols})")
     return new_family
+
+
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()
