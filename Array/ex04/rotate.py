@@ -2,16 +2,16 @@ import matplotlib.pyplot as plt
 from load_image import ft_load
 
 
-def main():
+def main() -> None:
     try:
         img = ft_load("animal.jpeg")
 
         if img.ndim != 3:
             raise AssertionError("Image must have 3 dimensions (H, W, C).")
 
-        height, width, channels = img.shape
+        height, width, _ = img.shape
         if height < 400 or width < 400:
-            raise AssertionError("Image is too small for a 400x400 zoom.")
+            raise AssertionError("Image is too small for a 400x400 crop.")
 
         half = 200
         cy = height // 2
@@ -22,17 +22,23 @@ def main():
         x_start = cx - half
         x_end = cx + half
 
-        zoom = img[y_start:y_end, x_start:x_end, 0:1]
+        square = img[y_start:y_end, x_start:x_end, :]
+        gray = square[:, :, 0:1]
 
-        h, w, c = zoom.shape
-        print(f"New shape after slicing: {zoom.shape} or ({h}, {w})")
-        print(zoom)
+        h, w, c = gray.shape
+        print(f"The shape of image is: ({h}, {w}, {c}) or ({h}, {w})")
+        print(gray)
 
-        zoom_2d = zoom[:, :, 0]
-        plt.imshow(zoom_2d, origin="upper")
+        gray_2d = gray[:, :, 0]
+        rotated = gray_2d.T
+
+        print(f"New shape after Transpose: {rotated.shape}")
+        print(rotated)
+
+        plt.imshow(rotated, origin="upper", cmap="gray")
         plt.xlabel("X axis")
         plt.ylabel("Y axis")
-        plt.title("Zoomed image")
+        plt.title("Transposed square image")
         plt.show()
 
     except AssertionError as e:

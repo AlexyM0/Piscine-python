@@ -1,0 +1,23 @@
+from PIL import Image
+import numpy as np
+
+
+def ft_load(path: str) -> np.ndarray:
+    assert path.lower().endswith(
+        (".jpg", ".jpeg", ".JPG", ".JPEG")
+    ), "Wrong format"
+    try:
+        img = Image.open(path)
+    except FileNotFoundError:
+        raise AssertionError("File not found")
+
+    arr = np.array(img)
+    return arr
+
+
+def main() -> None:
+    pass
+
+
+if __name__ == "__main__":
+    main()
