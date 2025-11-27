@@ -1,4 +1,9 @@
 def ft_filter(function, iterable):
+    """
+    Return a list of items from `iterable` for which `function` is True.
+
+    If `function` is None, keep all truthy items.
+    """
     if function is None:
         return [item for item in iterable if item]
     return [item for item in iterable if function(item)]
@@ -9,6 +14,9 @@ def ft_filter(function, iterable):
 
 
 def main():
+    """
+    Example placeholder for testing `ft_filter`.
+    """
     # print(ft_filter(is_even, [1, 2, 3, 4]))
     pass
 

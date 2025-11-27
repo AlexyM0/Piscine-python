@@ -2,6 +2,10 @@ import sys
 
 
 def translate_morse(string: str) -> bool:
+    """
+    Translate `string` to Morse code and print it.
+    Return False if a char is invalid.
+    """
     NESTED_MORSE = {
         " ": "/ ",
         "A": ".- ",
@@ -53,6 +57,9 @@ def translate_morse(string: str) -> bool:
 
 
 def main() -> None:
+    """
+    Check arguments and translate the given string to Morse.
+    """
     assert len(sys.argv) == 2, "the arguments are bad"
     assert translate_morse(sys.argv[1]), "the arguments are bad"
 

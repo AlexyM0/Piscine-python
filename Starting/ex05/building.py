@@ -2,6 +2,17 @@ import sys
 
 
 def print_sum(s: str):
+    """
+    Print a summary of character statistics for the given text.
+
+    The function counts and displays:
+      - total number of characters
+      - number of uppercase letters (A–Z)
+      - number of lowercase letters (a–z)
+      - number of punctuation marks (.,!?:;)
+      - number of whitespace characters (space, tab, newline)
+      - number of digits (0–9)
+    """
     size = len(s)
     count_upper = 0
     count_lower = 0
@@ -37,6 +48,15 @@ def print_sum(s: str):
 
 
 def main():
+    """
+    - If more than one argument is provided, the program stops with an
+      assertion error.
+    - If no argument is provided, the function prompts the user and reads
+      the entire text from standard input.
+    - If exactly one argument is provided, it is used as the text to analyze.
+
+    The chosen text is then passed to `print_sum` for analysis and display.
+    """
     assert len(sys.argv) <= 2, "more than one argument is provided"
     if len(sys.argv) < 2:
         print("What is the text to count?")

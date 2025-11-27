@@ -2,6 +2,9 @@ import os
 
 
 def ft_tqdm(lst: range):
+    """
+    Yield items from `lst` while displaying a progress bar in the terminal.
+    """
     total = len(lst)
     if total == 0:
         return
@@ -35,6 +38,9 @@ def ft_tqdm(lst: range):
 
 
 def main():
+    """
+    Placeholder for testing `ft_tqdm`.
+    """
     pass
 
 
