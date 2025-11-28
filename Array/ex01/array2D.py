@@ -1,6 +1,7 @@
 def slice_me(family: list, start: int, end: int) -> list:
     """
-    Slice `family` from row index `start` to `end` and print shapes before/after.
+    Slice `family` from row index `start` to
+    `end` and print shapes before/after.
     """
     assert type(family) is list, "family must be a list"
     for row in family:
