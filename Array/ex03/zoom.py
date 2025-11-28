@@ -3,6 +3,10 @@ from load_image import ft_load
 
 
 def main():
+    """
+    Load an image, zoom a 400x400 center area,
+    and display one channel.
+    """
     try:
         img = ft_load("animal.jpeg")
 

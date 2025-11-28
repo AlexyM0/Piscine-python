@@ -3,6 +3,10 @@ from load_image import ft_load
 
 
 def main() -> None:
+    """
+    Load an image, crop a 400x400 center square,
+    convert to grayscale, transpose, and display.
+    """
     try:
         img = ft_load("animal.jpeg")
 

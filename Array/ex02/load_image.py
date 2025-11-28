@@ -3,6 +3,9 @@ import numpy as np
 
 
 def ft_load(path: str) -> np.ndarray:
+    """
+    Load a JPEG image from `path` into a NumPy array and print its shape.
+    """
     assert path.lower().endswith(
         (".jpg", ".jpeg", ".JPG", ".JPEG")
     ), "Wrong format"
@@ -11,9 +14,7 @@ def ft_load(path: str) -> np.ndarray:
     except FileNotFoundError:
         raise AssertionError("File not found")
 
-
     arr = np.array(img)
     print("The shape of image is:", arr.shape)
     print(arr)
     return arr
-
