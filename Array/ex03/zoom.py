@@ -13,7 +13,7 @@ def main():
         if img.ndim != 3:
             raise AssertionError("Image must have 3 dimensions (H, W, C).")
 
-        height, width, channels = img.shape
+        height, width, _ = img.shape
         if height < 400 or width < 400:
             raise AssertionError("Image is too small for a 400x400 zoom.")
 
@@ -28,7 +28,7 @@ def main():
 
         zoom = img[y_start:y_end, x_start:x_end, 0:1]
 
-        h, w, c = zoom.shape
+        h, w, _ = zoom.shape
         print(f"New shape after slicing: {zoom.shape} or ({h}, {w})")
         print(zoom)
 

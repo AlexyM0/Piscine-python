@@ -1,5 +1,5 @@
-from PIL import Image
 import numpy as np
+from PIL import Image
 
 
 def ft_load(path: str) -> np.ndarray:
@@ -11,19 +11,8 @@ def ft_load(path: str) -> np.ndarray:
     ), "Wrong format"
     try:
         img = Image.open(path)
-    except FileNotFoundError:
-        raise AssertionError("File not found")
+    except FileNotFoundError as err:
+        raise AssertionError("File not found") from err
 
     arr = np.array(img)
     return arr
-
-
-def main() -> None:
-    """
-    Placeholder for testing `ft_load`.
-    """
-    pass
-
-
-if __name__ == "__main__":
-    main()

@@ -1,5 +1,5 @@
-from PIL import Image
 import numpy as np
+from PIL import Image
 
 
 def ft_load(path: str) -> np.ndarray:
@@ -11,8 +11,8 @@ def ft_load(path: str) -> np.ndarray:
     ), "Wrong format"
     try:
         img = Image.open(path)
-    except FileNotFoundError:
-        raise AssertionError("File not found")
+    except FileNotFoundError as err:
+        raise AssertionError("File not found") from err
 
     arr = np.array(img)
     print("The shape of image is:", arr.shape)
