@@ -18,3 +18,11 @@ def ft_load(path: str) -> np.ndarray:
     print("The shape of image is:", arr.shape)
     print(arr)
     return arr
+
+
+def main():
+    pass
+
+
+if __name__ == "__main__":
+    main()
