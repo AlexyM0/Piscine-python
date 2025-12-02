@@ -57,13 +57,17 @@ def main():
 
     The chosen text is then passed to `print_sum` for analysis and display.
     """
-    assert len(sys.argv) <= 2, "more than one argument is provided"
-    if len(sys.argv) < 2:
-        print("What is the text to count?")
-        arg = sys.stdin.read()
-    else:
-        arg = sys.argv[1]
-    print_sum(arg)
+    try:
+        if len(sys.argv) > 2:
+            raise AssertionError("more than one argument is provide")
+        if len(sys.argv) < 2:
+            print("What is the text to count?")
+            arg = sys.stdin.read()
+        else:
+            arg = sys.argv[1]
+        print_sum(arg)
+    except Exception as e:
+        print("AssertionError:", e)
 
 
 if __name__ == "__main__":

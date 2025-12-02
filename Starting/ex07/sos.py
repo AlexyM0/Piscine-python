@@ -60,8 +60,13 @@ def main() -> None:
     """
     Check arguments and translate the given string to Morse.
     """
-    assert len(sys.argv) == 2, "the arguments are bad"
-    assert translate_morse(sys.argv[1]), "the arguments are bad"
+    try:
+        if len(sys.argv) != 2:
+            raise AssertionError("the arguments are bad")
+        if not translate_morse(sys.argv[1]):
+            raise AssertionError("the arguments are bad")
+    except Exception as e:
+        print("AssertionError:", e)
 
 
 if __name__ == "__main__":

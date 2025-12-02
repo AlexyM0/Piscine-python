@@ -32,8 +32,12 @@ def main():
     """
     Read arguments from command line and call `printfilter`.
     """
-    assert len(sys.argv) == 3, "the arguments are bad"
-    printfilter(sys.argv[1], int(sys.argv[2]))
+    try:
+        if len(sys.argv) != 3:
+            raise AssertionError("the arguments are bad")
+        printfilter(sys.argv[1], int(sys.argv[2]))
+    except Exception as e:
+        print("AssertionError:", e)
 
 
 if __name__ == "__main__":
