@@ -40,15 +40,10 @@ def main() -> None:
         print(rotated)
 
         plt.imshow(rotated, origin="upper", cmap="gray")
-        plt.xlabel("X axis")
-        plt.ylabel("Y axis")
-        plt.title("Transposed square image")
         plt.show()
 
     except AssertionError as e:
         print(e)
-    except Exception as e:
-        print(f"Error: {e}")
 
 
 if __name__ == "__main__":

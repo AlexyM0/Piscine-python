@@ -5,17 +5,26 @@ def give_bmi(
     """
     Return the list of BMI values computed from `height` and `weight`.
     """
-    assert type(height) is list, "height must be a list"
-    assert type(weight) is list, "weight must be a list"
-    assert len(height) == len(weight), "Bad arguments"
-
+    try:
+        if type(height) is not list:
+            raise AssertionError("height must be a list")
+        if type(weight) is not list:
+            raise AssertionError("weight must be a list")
+        if len(height) != len(weight):
+            raise AssertionError("Bad arguments")
+    except AssertionError as error:
+        print("AssertionError: ", error)
+        return []
     result: list[int | float] = []
-    for h, w in zip(height, weight):
-        assert type(h) in (int, float) and type(w) in (int, float), (
-            "Bad type(s)"
-        )
-        bmi = w / (h**2)
-        result.append(bmi)
+    try:
+        for h, w in zip(height, weight):
+            if not (type(h) in (int, float) and type(w) in (int, float)):
+                raise AssertionError("Bad type(s)")
+            bmi = w / (h**2)
+            result.append(bmi)
+    except AssertionError as error:
+        print("AssertionError: ", error)
+        return []
     return result
 
 
@@ -26,19 +35,18 @@ def apply_limit(
     """
     Return a list of booleans indicating if each BMI is >= `limit`.
     """
-    result: list[bool] = []
-    for b in bmi:
-        assert type(b) in (int, float), "Bad type(s)"
-        result.append(b >= limit)
-    return result
+    try:
+        if not isinstance(bmi, list):
+            raise AssertionError("must be a list")
+        result: list[bool] = []
+        for b in bmi:
+            if not isinstance(b, (int, float)):
+                raise AssertionError(
+                    "Bad type(s)"
+                )
+            result.append(b > limit)
+        return result
 
-
-def main():
-    """
-    Placeholder for testing `give_bmi` and `apply_limit`.
-    """
-    pass
-
-
-if __name__ == "__main__":
-    main()
+    except AssertionError as error:
+        print("AssertionError: ", error)
+        return []
