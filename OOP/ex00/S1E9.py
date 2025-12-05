@@ -19,24 +19,11 @@ class Character(ABC):
         self.first_name = first_name
         self.is_alive = is_alive
 
-    def __str__(self):
-        """
-        Return a user-friendly string representation of the character.
-        """
-        return self.first_name
-
-    def __repr__(self):
-        """
-        Return a developer-friendly string representation of the character.
-        """
-        return f"{type(self).__name__}(first_name='{self.first_name}', is_alive={self.is_alive})"
-
     def die(self):
         """
         Method to change the health state of the character
         """
         pass
-
 
 
 class Stark(Character):
