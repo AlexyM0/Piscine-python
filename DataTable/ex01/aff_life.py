@@ -51,7 +51,6 @@ def plot_life_expectancy_france_wide(df: pd.DataFrame):
         france_data_long['Year'].to_numpy(),
         france_data_long['Life Expectancy'].to_numpy(),
         color='blue',
-        linewidth=2
     )
 
     plt.title("France Life expectancy Projections")
