@@ -5,7 +5,6 @@ class Character(ABC):
     """
     Abstract class representing a character.
     """
-
     @abstractmethod
     def __init__(self, first_name, is_alive=True):
         """
