@@ -20,8 +20,6 @@ def projection_life_income(
         raise AssertionError(
             "Error: DataFrame could not be loaded."
         )
-    df_life.columns = df_life.columns.str.strip()
-    df_income.columns = df_income.columns.str.strip()
 
     year = "1900"
     country_col = "country"
@@ -45,7 +43,6 @@ def projection_life_income(
             df_income_1900,
             on=country_col,
         )
-        .dropna()
     )
 
     if df_merged.empty:

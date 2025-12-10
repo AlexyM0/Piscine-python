@@ -12,7 +12,10 @@ def load(path: str) -> pd.DataFrame:
             raise AssertionError("The file doesn't exist")
         if not path.lower().endswith('.csv'):
             raise AssertionError("The file format is not .csv")
-        df = pd.read_csv(path)
+        try:
+            df = pd.read_csv(path)
+        except pd.errors.EmptyDataError:
+            raise AssertionError("The file is empty")
         print(f"Loading dataset of dimensions {df.shape}")
         return df
     except AssertionError as error:

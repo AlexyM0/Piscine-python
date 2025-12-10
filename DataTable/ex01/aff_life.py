@@ -12,12 +12,10 @@ def plot_life_expectancy_france_wide(df: pd.DataFrame):
     if df is None:
         raise AssertionError("Error: DataFrame could not be loaded.")
 
-    df.columns = df.columns.str.strip()
-
     if 'country' not in df.columns:
         raise AssertionError("Error: Column 'country' not found.")
 
-    france_data = df[df['country'].str.strip().str.lower() == 'france'].copy()
+    france_data = df[df['country'] == 'France'].copy()
 
     if france_data.empty:
         raise AssertionError("Warning: No data found for country 'France'.")
@@ -41,8 +39,6 @@ def plot_life_expectancy_france_wide(df: pd.DataFrame):
     except Exception as e:
         print(f"Data type conversion error: {e}")
         return
-
-    france_data_long.dropna(subset=['Year', 'Life Expectancy'], inplace=True)
 
     if france_data_long.empty:
         raise AssertionError("Warning: Data for France was found.")

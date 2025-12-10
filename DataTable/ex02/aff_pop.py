@@ -1,24 +1,25 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
 
 from load_csv import load
 
 
 def plot_population_france_vs_belgium(df: pd.DataFrame) -> None:
+    """
+    displays the country information
+    of Paris versus Belgique
+    """
     if df is None:
         raise AssertionError(
             "Error: DataFrame could not be loaded."
         )
 
-    df.columns = df.columns.str.strip()
-
     if "country" not in df.columns:
         raise AssertionError("Error: Column 'country' not found.")
 
-    countries = ["france", "belgium"]
+    countries = ["France", "Belgium"]
     data_wide = df[
-        df["country"].str.strip().str.lower().isin(countries)
+        df["country"].str.lower().isin(countries)
     ].copy()
 
     if data_wide.empty:
@@ -53,16 +54,12 @@ def plot_population_france_vs_belgium(df: pd.DataFrame) -> None:
         print(f"Data type conversion error: {e}")
         return
 
-    data_long.dropna(subset=["Year", "Population"], inplace=True)
-
     data_long = data_long[data_long["Year"] <= 2050].copy()
 
     if data_long.empty:
         raise AssertionError(
             "Warning: No valid data found after cleaning and filtering."
         )
-
-    ax = plt.gca()
 
     color_map = {
         "france": "green",
@@ -76,17 +73,13 @@ def plot_population_france_vs_belgium(df: pd.DataFrame) -> None:
 
         plt.plot(
             plot_data["Year"].to_numpy(),
-            plot_data["Population"].to_numpy(),
+            (plot_data["Population"] / 1_000_000).to_numpy(),
             color=color_map.get(country),
             label=country.capitalize(),
             linewidth=2,
         )
 
     min_year = data_long["Year"].min()
-    formatter = ticker.FuncFormatter(
-        lambda x, pos: f"{x / 1_000_000:.0f}M"
-    )
-    ax.yaxis.set_major_formatter(formatter)
 
     plt.title("Population Projections")
     plt.xlabel("Year")
