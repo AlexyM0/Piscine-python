@@ -9,9 +9,6 @@ def plot_life_expectancy_france_wide(df: pd.DataFrame):
     melts it into long format,
     and plots life expectancy over time.
     """
-    if df is None:
-        raise AssertionError("Error: DataFrame could not be loaded.")
-
     if 'country' not in df.columns:
         raise AssertionError("Error: Column 'country' not found.")
 
